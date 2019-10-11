@@ -9,14 +9,14 @@ body {
     background-color: white;
 }
 
-.header {
+header {
     background-color: #1D2475;
     color: white;
     border: none;
     text-align: right;
 }
 
-.header > h2 {
+header > h2 {
     font-size: 14px;
     color: #CCCCCC;
     border: none;
@@ -26,19 +26,35 @@ span {
     border-bottom: 2px dashed blue;
 }
 
-.session {
+section {
     border: 4px solid #1D2475;
     border-radius: 15px;
     background-color: #99CCFF;
     padding: 5px;
     margin-top: 10px;
     overflow: hidden;
+    text-align: justify;
 }
 
-div > img {
+section > p > img {
     float: right;
 }
 
-.sidebar {
+aside {
+    width: 150px;
+    background-color: #3366CC;
+    border-radius: 15px;
+    padding: 5px;
+    color: whitesmoke;
+    border: 4px solid #1D2475;
     float: left;
+    margin-top: 10px;
+}
+
+article{
+    margin-left: 180px;
+}
+
+* *:not(div):hover {
+    background-color: #A6CE39;
 }
