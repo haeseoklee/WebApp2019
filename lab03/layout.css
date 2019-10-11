@@ -1,0 +1,44 @@
+body {
+    background-image: url("blueTextureBG.jpg");
+    margin-left: 10%;
+    margin-right: 10%;
+    align-content: center;
+}
+.contents {
+    border: 10px solid white;
+    background-color: white;
+}
+
+.header {
+    background-color: #1D2475;
+    color: white;
+    border: none;
+    text-align: right;
+}
+
+.header > h2 {
+    font-size: 14px;
+    color: #CCCCCC;
+    border: none;
+}
+
+span {
+    border-bottom: 2px dashed blue;
+}
+
+.session {
+    border: 4px solid #1D2475;
+    border-radius: 15px;
+    background-color: #99CCFF;
+    padding: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+div > img {
+    float: right;
+}
+
+.sidebar {
+    float: left;
+}
