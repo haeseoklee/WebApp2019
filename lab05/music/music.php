@@ -25,12 +25,10 @@
 			<h2>Billboard News</h2>
 		
 			<ol>
-			<?php 
-			$newspages = (int) $_GET["newspages"];
+			<?php $newspages = (int) $_GET["newspages"];
 			if (isset($newspages)){
 				$newspages = 5;
-			}
-			?>
+			}?>
 
 			<?php for($i=11; $i>11-$newspages; $i--) {
 				if ($i<10){
@@ -46,7 +44,6 @@
 		<!-- Ex 4: Favorite Artists (Arrays) -->
 		<?php $artists = array("Guns N' Roses", "Green Day", "Blink182", "Queen", "Lovelyz");?>
 		<!-- Ex 5: Favorite Artists from a File (Files) -->
-		
 		<div class="section">
 			<h2>My Favorite Artists</h2>
 		
@@ -63,8 +60,7 @@
 		<div class="section">
 			<h2>My Music and Playlists</h2>
 			<ul id="musiclist">
-			<?php 
-			$temp = array();
+			<?php $temp = array();
 			foreach($mp3_files as $file) {
 				$file_size = floor(filesize($file) / 1024);
 				$temp[$file] = $file_size;
