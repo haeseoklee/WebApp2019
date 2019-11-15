@@ -1,0 +1,72 @@
+/* imdb DB */
+
+/* 1번 */
+select role from roles where movie_id = (select id from movies where name='Pi');
+/* 2번 */
+/*select first_name, last_name from actors where id = any (select actor_id from roles 
+where movie_id = (select id from movies where name='Pi'));*/
+select first_name, last_name from actors 
+join roles on id = actor_id 
+where movie_id = (select id from movies where name='Pi');
+/* 3번 */
+/* select first_name, last_name from actors a
+join roles r1 on a.id = r1.actor_id 
+join roles r2 on a.id = r2.actor_id 
+where r1.movie_id = (select id from movies where name='Kill Bill: Vol. 2') and
+r2.movie_id = (select id from movies where name='Kill Bill: Vol. 1'); */
+
+select first_name, last_name from actors a
+join roles r1 on a.id = r1.actor_id
+join movies m1 on m1.id = r1.movie_id
+join roles r2 on a.id = r2.actor_id
+join movies m2 on m2.id = r2.movie_id
+where m1.name = 'Kill Bill: Vol. 1' and m2.name = 'Kill Bill: Vol. 2';
+
+/* 4번 */
+select first_name, last_name, count(first_name) from actors a
+join roles r on r.actor_id = a.id
+join movies m on m.id = r.movie_id
+group by first_name, last_name
+order by count(a.id) desc
+limit 7;
+
+/* 5번 */
+select genre, count(genre) cnt from movies_genres
+group by genre
+order by count(genre) desc
+limit 3;
+
+/* 6번 */
+select first_name, last_name, count(d.id) cnt from directors d
+join movies_directors md on d.id = md.director_id
+join movies_genres mg on md.movie_id = mg.movie_id
+where mg.genre = 'Thriller'
+group by first_name, last_name
+order by count(d.id) desc
+limit 1;
+
+--------------------------------------------------------------------------------
+/* simpsons DB */
+
+/* 1번 */
+select grade from grades where course_id = (select id from courses where name = 'Computer Science 143');
+
+/* 2번 */
+select s.name, g.grade from students s
+join grades g on g.student_id = s.id
+join courses c on c.id = g.course_id
+where c.name = 'Computer Science 143' and
+g.grade <= 'B-';
+
+/* 3번 */
+select s.name, g.grade, c.name from students s
+join grades g on g.student_id = s.id
+join courses c on c.id = g.course_id
+where g.grade <= 'B-';
+
+/* 4번 */
+select c.name, count(s.id) cnt from courses c
+join grades g on g.course_id = c.id
+join students s on s.id = g.student_id
+group by c.name
+having count(s.id) >= 2;
